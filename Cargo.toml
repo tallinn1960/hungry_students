@@ -1,0 +1,14 @@
+[package]
+name = "hungry_students"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+criterion = "0.5.1"
+rand = "0.8.4"
+
+[[bench]]
+name = "hungry_students"
+harness = false
