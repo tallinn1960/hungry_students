@@ -1,6 +1,6 @@
 use std::collections::VecDeque;
 
-pub fn count_students(students: Vec<i32>, sandwiches: Vec<i32>) -> i32 {
+pub fn count_students(students: &[i32], sandwiches: &[i32]) -> i32 {
     // this is interestingly faster than the naive filter-based count
     let (mut s, mut c) =
         students.iter().fold((0, 0), |(mut s, mut c), &student| {
@@ -49,13 +49,13 @@ mod tests {
 
     #[test]
     fn test_1() {
-        assert_eq!(count_students(vec![1, 1, 0, 0], vec![0, 1, 0, 1]), 0);
+        assert_eq!(count_students(&vec![1, 1, 0, 0], &vec![0, 1, 0, 1]), 0);
     }
 
     #[test]
     fn test_2() {
         assert_eq!(
-            count_students(vec![1, 1, 1, 0, 0, 1], vec![1, 0, 0, 0, 1, 1]),
+            count_students(&vec![1, 1, 1, 0, 0, 1], &vec![1, 0, 0, 0, 1, 1]),
             3
         );
     }
