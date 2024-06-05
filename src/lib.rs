@@ -2,15 +2,9 @@ use std::collections::VecDeque;
 
 pub fn count_students(students: &[i32], sandwiches: &[i32]) -> i32 {
     // this is interestingly faster than the naive filter-based count
-    let (mut s, mut c) =
-        students.iter().fold((0, 0), |(mut s, mut c), &student| {
-            if student == 1 {
-                s += 1;
-            } else {
-                c += 1;
-            };
-            (s, c)
-        });
+    let (mut s, mut c) = students.iter().fold((0, 0), |(s, c), &student| {
+      (s + student, c + (1 - student))
+    });
     for top in sandwiches {
         match top {
             1 if s > 0 => s -= 1,
